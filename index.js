@@ -28,11 +28,15 @@ const connectDB = require("./db/connectDB");
 // all router 
 const authRouter = require("./router/user.route");
 const prodoctRouter = require("./router/product.route");
+const reviewRouter = require("./router/reviews.route");
+
 
 
 
 app.use('/api/auth' , authRouter)
 app.use('/api/products', prodoctRouter)
+app.use('/api/reviews', reviewRouter)
+
 
 app.get("/", (req, res) => {
   res.send("Hello World");
