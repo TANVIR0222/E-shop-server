@@ -2,7 +2,6 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 // const jwt = require("jsonwebtoken");
-var cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -17,7 +16,6 @@ app.use(
 );
 app.use(express.json({limite: '25mb'}));
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
