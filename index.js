@@ -34,11 +34,12 @@ app.use('/api/auth' , authRouter)
 app.use('/api/products', prodoctRouter)
 app.use('/api/reviews', reviewRouter)
 
-
+// say hello 
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
+// server runing port 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
   connectDB();
