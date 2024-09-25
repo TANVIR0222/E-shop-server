@@ -176,17 +176,6 @@ const relatedProduct = async (req, res) => {
   }
 };
 
-// get all product
-const allProduct = async (req, res) => {
-  try {
-    const mal = await Product.find({})
-    res.status(201).send({ message: "allda " , mal});
-
-  } catch (error) {
-    console.log(" Error delete  Product  faild :", error);
-    res.status(404).send({ message: "Error delete  Product  faild " });
-  }
-}
 
 module.exports = {
   createProduct,
@@ -195,5 +184,4 @@ module.exports = {
   updateProduct,
   deleteProduct,
   relatedProduct,
-  allProduct,
 };
