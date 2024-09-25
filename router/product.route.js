@@ -6,7 +6,6 @@ const {
   updateProduct,
   deleteProduct,
   relatedProduct,
-  allProduct,
 } = require("../controllers/product.controller");
 const veryfyAdmin = require("../middleware/veryfiAdmin");
 const router = express.Router();
@@ -17,6 +16,5 @@ router.get("/:id", getSingleProducr);
 router.patch("/update-product/:id", veryfyAdmin, updateProduct);
 router.delete("/delete-product/:id", deleteProduct);
 router.get("/related/:id", relatedProduct);
-router.get("/mal", allProduct);
 
 module.exports = router;
