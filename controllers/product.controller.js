@@ -28,7 +28,6 @@ const createProduct = async (req, res) => {
 // get all product and filteing
 const getAllProduct = async (req, res) => {
   try {
-    
     const {
       category,
       color,
@@ -72,7 +71,7 @@ const getAllProduct = async (req, res) => {
       .sort({ createdAt: -1 });
 
     // const allProuduct = await Product.find({}, "name category");
-    res.status(201).json({product, totalpage, totalProducct});
+    res.status(201).json({ product, totalpage, totalProducct });
   } catch (error) {
     console.log(" Error get All product faild :", error);
     res.status(404).send({ message: "Error get All product faild " });
@@ -157,7 +156,7 @@ const relatedProduct = async (req, res) => {
     }
 
     //
-    const titleRegex = new RegExp( // 1 word ar sathe onnow 1 word ar kicu mit khuje berkra 
+    const titleRegex = new RegExp( // 1 word ar sathe onnow 1 word ar kicu mit khuje berkra
       product.name
         .split(" ") //  product.name is "Red Apple Juice", the result of .split(" ") would be: ["Red", "Apple", "Juice"]
         .filter((word) => word.length > 1)
@@ -166,9 +165,9 @@ const relatedProduct = async (req, res) => {
     );
 
     const relatedProduct = await Product.find({
-      _id: { $ne: id }, // $ne is a MongoDB query operator meaning "not equal." & ai id chara annow relatibe  id gula ke khuje 
-      $or: [{ name: { $regex: titleRegex } }, { category: product.category }], // name and category uopre nirbor kore khuje 
-    }); 
+      _id: { $ne: id }, // $ne is a MongoDB query operator meaning "not equal." & ai id chara annow relatibe  id gula ke khuje
+      $or: [{ name: { $regex: titleRegex } }, { category: product.category }], // name and category uopre nirbor kore khuje
+    });
 
     res.status(201).send(relatedProduct);
   } catch (error) {
@@ -177,6 +176,18 @@ const relatedProduct = async (req, res) => {
   }
 };
 
+// get all product
+const allProduct = async (req, res) => {
+  try {
+    const mal = await Product.find({})
+    res.status(201).send({ message: "allda " , mal});
+
+  } catch (error) {
+    console.log(" Error delete  Product  faild :", error);
+    res.status(404).send({ message: "Error delete  Product  faild " });
+  }
+}
+
 module.exports = {
   createProduct,
   getAllProduct,
@@ -184,4 +195,5 @@ module.exports = {
   updateProduct,
   deleteProduct,
   relatedProduct,
+  allProduct,
 };
