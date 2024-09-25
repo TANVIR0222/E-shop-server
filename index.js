@@ -29,7 +29,7 @@ const reviewRouter = require("./router/reviews.route");
 
 
 
-
+// all router 
 app.use('/api/auth' , authRouter)
 app.use('/api/products', prodoctRouter)
 app.use('/api/reviews', reviewRouter)
